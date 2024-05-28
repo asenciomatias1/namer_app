@@ -64,6 +64,12 @@ class _MyHomePageState extends State<MyHomePage> {
       case 1:
         page = FavoritesPage();
         break;
+      case 2:
+        page = RotatedBox(
+          quarterTurns: 3,
+          child: FavoritesPage(),
+        );
+        break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
@@ -74,18 +80,22 @@ class _MyHomePageState extends State<MyHomePage> {
           body: Row(
             children: [
               SafeArea(
-                child: NavigationRail(
-                  extended: constraints.maxWidth >= 600,
-                  destinations: [
-                    NavigationRailDestination(
-                      icon: Icon(Icons.home),
-                      label: Text('Home'),
-                    ),
-                    NavigationRailDestination(
-                      icon: Icon(Icons.favorite),
-                      label: Text('Favoritos'),
-                    ),
-                  ],
+              child: NavigationRail(
+                extended: constraints.maxWidth >= 600,
+                destinations: [
+                  NavigationRailDestination(
+                    icon: Icon(Icons.home),
+                    label: Text('Home'),
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.favorite),
+                    label: Text('Favoritos'),
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.rotate_90_degrees_ccw_rounded),
+                    label: Text('Rotar Favoritos'),
+                  ),
+                ],
                   selectedIndex: selectedIndex,
                   onDestinationSelected: (value) {
                     setState(() {
